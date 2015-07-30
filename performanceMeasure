@@ -1,0 +1,28 @@
+performanceMeasure <- function(actual, predicted) {
+  cM = table(actual,predicted)
+  TN <- cM[1]
+  TP <- cM[4]
+  FP <- cM[2]
+  FN <- cM[3]
+  model <- data.frame()
+  model$accuracy <- (TP + TN)/(TP+TN+FP+FN)
+  model$precision <- TP/(TP + FP)
+  model$PPV <- precision
+  model$recall <- TP/ (TP + FN)
+  model$sensitivity <- recall
+  model$TPR <- recall
+  model$specificity<- TN/(TN + FP)
+  model$TNR <- specificity
+  model$NPV <- TN/(TN + FN)
+  model$FPR <- FP/(FP + TN)
+  model$FNR <- 1 - TPR
+  model$FDR <- 1 - PPV
+  model$F1score <- 2*TP/(2*TP + FP + FN)
+  model$MCC <- (TP * TN - FP * FN)/((TP+FP)*(TP+FN)*(TN+FP)*(TN+FN))
+  model$type1error <- FP
+  model$type2error <- FN
+  
+  print("accuracy, precision, recall")
+  print(c(accuracy, precision, recall))
+  return(model)
+}
