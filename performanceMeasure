@@ -4,25 +4,43 @@ performanceMeasure <- function(actual, predicted) {
   TP <- cM[4]
   FP <- cM[2]
   FN <- cM[3]
-  model <- data.frame()
-  model$accuracy <- (TP + TN)/(TP+TN+FP+FN)
-  model$precision <- TP/(TP + FP)
-  model$PPV <- precision
-  model$recall <- TP/ (TP + FN)
-  model$sensitivity <- recall
-  model$TPR <- recall
-  model$specificity<- TN/(TN + FP)
-  model$TNR <- specificity
-  model$NPV <- TN/(TN + FN)
-  model$FPR <- FP/(FP + TN)
-  model$FNR <- 1 - TPR
-  model$FDR <- 1 - PPV
-  model$F1score <- 2*TP/(2*TP + FP + FN)
-  model$MCC <- (TP * TN - FP * FN)/((TP+FP)*(TP+FN)*(TN+FP)*(TN+FN))
-  model$type1error <- FP
-  model$type2error <- FN
+  
+  accuracy <- (TP + TN)/(TP+TN+FP+FN)
+  precision <- TP/(TP + FP)
+  recall <- TP/ (TP + FN)
+  PPV <- precision
+  sensitivity <- recall
+  TPR <- recall
+  specificity<- TN/(TN + FP)
+  TNR <- specificity
+  NPV <- TN/(TN + FN)
+  FPR <- FP/(FP + TN)
+  FNR <- 1 - TPR
+  FDR <- 1 - PPV
+  F1score <- 2*TP/(2*TP + FP + FN)
+  MCC <- (TP * TN - FP * FN)/((TP+FP)*(TP+FN)*(TN+FP)*(TN+FN))
+  type1error <- FP
+  type2error <- FN
   
   print("accuracy, precision, recall")
   print(c(accuracy, precision, recall))
-  return(model)
+
+  result <- list(
+    "accuracy"=accuracy,
+    "precision"=precision,
+    "recall"=recall,
+    "sensitivity"=sensitivity,
+    "specificity"=specificity,
+    "PPV"=PPV,
+    "TPR"=TPR,
+    "NPV"=NPV,
+"FPR"=FPR,
+"FNR"=FNR,
+"FDR"=FDR,
+    "F1score"=F1score,
+    "MCC"=MCC,
+   "type1error"=type1error,
+     "type2error"=type2error
+  )
+  return(result)
 }
