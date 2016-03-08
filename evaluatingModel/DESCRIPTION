@@ -1,0 +1,11 @@
+Package: evaluatingModel
+Title: Performance Measures
+Version: 0.0.0.9000
+Authors@R: person("Shraddha", "Surana", email = "shraddha.surana@gmail.com", role = c("aut", "cre"))
+Description: Gives various performance indicators for actual and predicted
+    values.
+Depends:
+    R (>= 3.2.3)
+License: GPL (>= 2)
+LazyData: false
+RoxygenNote: 5.0.1.9000
